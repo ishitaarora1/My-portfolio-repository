@@ -6,4 +6,4 @@
 # Database and Tools
  ### Database - music store database
  ### Database schema
- <img src="C:\Users\arora\OneDrive\Desktop\sample datasets">
+ <img src="<img width="594" alt="schema_diagram" src="https://user-images.githubusercontent.com/108074039/226102431-30b03b67-09ad-4910-a099-9c011e928099.png">">
