@@ -15,13 +15,13 @@ each time the table has to be referred by the project and the dataset name prece
  
  ## Here are some of the important questions to be asked in order to discover some insights from this dataset.
  
- ### * *Question-1*  who is the senior most employee based on job title?
+ ### - *Question-1*  who is the senior most employee based on job title?
 
    select concat(first_name," ",last_name)as name_of_senior_most_employee, from `my-portfolio-project-380610.music_dataset.employee` 
    order by levels desc limit 1 
    
    
-   ### * *Question-2* which countries have the most invoices?
+   ### - *Question-2* which countries have the most invoices?
 
 SELECT billing_country as country,count(*) as number_of_invoices
 FROM `my-portfolio-project-380610.music_dataset.invoice`
@@ -29,6 +29,19 @@ group by billing_country
 order by number_of_invoices desc limit 1
 
 #### in the output we can  see that usa has the maximum number of invoices
+
+
+### - *Question-3* * Q3: /* Which city has the best customers? We would like to throw a promotional Music Festival in the city we made the most money. 
+###                      Write a query that returns one city that has the highest sum of invoice totals. 
+###                      Return both the city name & sum of all invoice totals */
+
+
+SELECT billing_city as city ,round(sum(total)) as total_sales 
+FROM `my-portfolio-project-380610.music_dataset.invoice` 
+group by city 
+order by total_sales desc limit 5
+
+#### The output shows  the top five cities in terms of sales , prague being on top.
 
 
 	
