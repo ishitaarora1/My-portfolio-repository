@@ -10,15 +10,25 @@
 
 # DATA ANALYSIS
 ### Note: 
-this project is done in google cloud big query console . Accoeding to big query syntax , 
+this project is done in google cloud big query console . According to big query syntax , 
 each time the table has to be referred by the project and the dataset name preceding it , followed by a dot notation.
  
  ## Here are some of the important questions to be asked in order to discover some insights from this dataset.
  
- ###* *Question-1*  who is the senior most employee based on job title?
+ ### * *Question-1*  who is the senior most employee based on job title?
 
    select concat(first_name," ",last_name)as name_of_senior_most_employee, from `my-portfolio-project-380610.music_dataset.employee` 
    order by levels desc limit 1 
+   
+   
+   ### * *Question-2* which countries have the most invoices?
+
+SELECT billing_country as country,count(*) as number_of_invoices
+FROM `my-portfolio-project-380610.music_dataset.invoice`
+group by billing_country
+order by number_of_invoices desc limit 1
+
+#### in the output we can  see that usa has the maximum number of invoices
 
 
 	
