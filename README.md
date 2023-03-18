@@ -8,7 +8,7 @@
  ### Database schema
 <img width="594" alt="schema_diagram" src="https://user-images.githubusercontent.com/108074039/226102431-30b03b67-09ad-4910-a099-9c011e928099.png">
 
-# DATA ANALYSIS
+## *DATA ANALYSIS*
 ### Note: 
 this project is done in google cloud big query console . According to big query syntax , 
 each time the table has to be referred by the project and the dataset name preceding it , followed by a dot notation.
@@ -16,6 +16,8 @@ each time the table has to be referred by the project and the dataset name prece
  ## Here are some of the important questions to be asked in order to discover some insights from this dataset.
  
  ###  *Question-1*  who is the senior most employee based on job title?
+ 
+ 
 
    select concat(first_name," ",last_name)as name_of_senior_most_employee, from `my-portfolio-project-380610.music_dataset.employee` 
    order by levels desc limit 1 
@@ -168,9 +170,9 @@ SELECT artist.name as artist_name,count(artist.name) as total_track_count
 
 
 
-### Thank you for reading.Let me know any if you have any feedbacks or suggestions. 
+### Thank you for reading.Let me know  if you have any feedbacks or suggestions. 
 
-### contact me:
+### contact me on:
 ### [Linkedin](https://www.linkedin.com/in/ishita-arora-51616b1b3/)| [Instagram](https://www.instagram.com/windy_pooh101/)|[gmail](aroraishita596@gmail.com)
 
 
