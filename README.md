@@ -86,6 +86,41 @@ limit 1
 SELECT name as name_of_track , milliseconds as track_duration FROM `my-portfolio-project-380610.music_dataset.track`as track 
 where milliseconds > (select avg(milliseconds) from `my-portfolio-project-380610.music_dataset.track`)
 order by track_duration desc
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ ### *Question-6*  Write query to return the email, first name, last name, & Genre of all Rock Music listeners. 
+ ###                Return your list ordered alphabetically by email starting with A. 
+
+
+
+
+/*Explaination - we have to pull out customer information from customer table , along with the genre they listen to , from the genre table . 
+since we cannot join customer and genre table directly (no common column ), we have to join first
+customer table with invoice table with 'customer_id' THEN
+invoice table with invoice line table with 'invoice_id' column . Then,
+invoice line table with track table with 'track_id' column. Then finally , 
+Track table with genre table with 'genre id '.*/
+
+
+
+
+SELECT distinct concat(first_name," ",last_name) as name , email,genre.name as genre  FROM `my-portfolio-project-380610.music_dataset.customers`as customers join
+`my-portfolio-project-380610.music_dataset.invoice` as invoice on customers.customer_id = invoice.customer_id
+join `my-portfolio-project-380610.music_dataset.invoice_line`as invoice_line on invoice.invoice_id = invoice_line.invoice_id
+join `my-portfolio-project-380610.music_dataset.track` as track on invoice_line.track_id = track.track_id
+join `my-portfolio-project-380610.music_dataset.genre` as genre on track.genre_id = genre.genre_id
+where genre.name='Rock'
+order by email
 
 
 
@@ -97,10 +132,46 @@ order by track_duration desc
 
 
 
-Thank you for reading.Let me know any if you have any feedbacks or suggestions. 
 
-contact me:
-[Linkedin](https://www.linkedin.com/in/ishita-arora-51616b1b3/)| [Instagram](https://www.instagram.com/windy_pooh101/)|[gmail](aroraishita596@gmail.com)
+### *Question-7*  Let's invite the artists who have written the most rock music in our dataset. 
+###               Write a query that returns the Artist name and total track count of the top 10 rock bands.
+
+
+
+
+/* Explaination - Again , like the previous query , we need data from two tables for this - artist table for artist names and 
+genre table for the genre name but we cannot directly join them . If we check the schema diagram ,
+ artist and genre table are connected by the album and track table .
+
+ so , this is how we go about it.
+
+ First , we join artist table with album table with 'artist_id' Then , 
+ we join album table with the track table with 'album_id'. Then , finally ,
+ we join track table with 'genre' table with 'genre_id'.*/
+
+
+
+
+
+
+SELECT artist.name as artist_name,count(artist.name) as total_track_count
+ FROM `my-portfolio-project-380610.music_dataset.artist`as artist
+ join `my-portfolio-project-380610.music_dataset.project_tables` as album on artist.artist_id = album.artist_id
+ join `my-portfolio-project-380610.music_dataset.track` as track on album.album_id = track.album_id
+ join `my-portfolio-project-380610.music_dataset.genre` as genre on track.genre_id = genre.genre_id
+ where genre.name='Rock'
+ group by artist_name
+ order by 2 desc
+ limit 10
+
+ #### now we can see top 10 artists and their total track count in the output.
+
+
+
+### Thank you for reading.Let me know any if you have any feedbacks or suggestions. 
+
+### contact me:
+### [Linkedin](https://www.linkedin.com/in/ishita-arora-51616b1b3/)| [Instagram](https://www.instagram.com/windy_pooh101/)|[gmail](aroraishita596@gmail.com)
 
 
 	
