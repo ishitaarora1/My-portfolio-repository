@@ -7,3 +7,15 @@
  ### Database - music store database
  ### Database schema
 <img width="594" alt="schema_diagram" src="https://user-images.githubusercontent.com/108074039/226102431-30b03b67-09ad-4910-a099-9c011e928099.png">
+
+# DATA ANALYSIS
+ 
+ ## Here are some of the important questions to be asked in order to discover some insights from this dataset.
+ 
+ ###* *Question-1*  who is the senior most employee based on job title?
+
+   select concat(first_name," ",last_name)as name_of_senior_most_employee, from `my-portfolio-project-380610.music_dataset.employee` 
+   order by levels desc limit 1 
+
+
+	
